@@ -1,4 +1,6 @@
-﻿using log4net;
+﻿using DadosExporter.Exporter;
+using DadosExporter.Services;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,27 +15,29 @@ namespace DadosExporter
 {
     public partial class ExportarDadosService : ServiceBase
     {
-        private static readonly ILog Log =
-              LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private EventosWindowsLogger Logger;
+        private Configurer Configurer;
         public ExportarDadosService()
         {
             InitializeComponent();
+            Logger = new EventosWindowsLogger();
+            Configurer = new Configurer();
         }
 
         protected override void OnStart(string[] args)
         {
-            Log.Info("DadosExporter iniciado");
+            Logger.AddLog("DadosExporter iniciado");
+            Configurer.ConfigurarRelatorios();
         }
 
         protected override void OnStop()
         {
-            Log.Info("DadosExporter finalizado");
+            Logger.AddLog("DadosExporter finalizado");
         }
 
         protected override void OnContinue()
         {
-            Log.Info("DadosExporter ativo");
+            Logger.AddLog("DadosExporter ativo");
         }
 
     }

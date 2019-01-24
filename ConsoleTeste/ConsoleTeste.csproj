@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82573C21-FD85-49C2-9CEB-476CA039959B}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>DadosExporter</RootNamespace>
-    <AssemblyName>DadosExporter</AssemblyName>
+    <ProjectGuid>{140EA729-0A26-4DA3-8F2D-4A833E8EA8AA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleTeste</RootNamespace>
+    <AssemblyName>ConsoleTeste</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,51 +33,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consts.cs" />
-    <Compile Include="Exporter\Gerador.cs" />
-    <Compile Include="Interfaces\ILogger.cs" />
-    <Compile Include="Services\EventosWindowsLogger.cs" />
-    <Compile Include="Services\ExportarDadosService.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Services\ExportarDadosService.Designer.cs">
-      <DependentUpon>ExportarDadosService.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Exporter\Configurer.cs" />
-    <Compile Include="Models\Relatorio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\Exceptions\ConfiguracaoNaoEncontradaException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Files.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exporter\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RelatoriosConfig.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DadosExporter\DadosExporter.csproj">
+      <Project>{82573C21-FD85-49C2-9CEB-476CA039959B}</Project>
+      <Name>DadosExporter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

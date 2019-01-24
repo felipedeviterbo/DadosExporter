@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DadosExporter", "DadosExporter\DadosExporter.csproj", "{82573C21-FD85-49C2-9CEB-476CA039959B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTeste", "ConsoleTeste\ConsoleTeste.csproj", "{140EA729-0A26-4DA3-8F2D-4A833E8EA8AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{82573C21-FD85-49C2-9CEB-476CA039959B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82573C21-FD85-49C2-9CEB-476CA039959B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82573C21-FD85-49C2-9CEB-476CA039959B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140EA729-0A26-4DA3-8F2D-4A833E8EA8AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140EA729-0A26-4DA3-8F2D-4A833E8EA8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140EA729-0A26-4DA3-8F2D-4A833E8EA8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140EA729-0A26-4DA3-8F2D-4A833E8EA8AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

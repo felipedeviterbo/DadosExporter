@@ -14,7 +14,7 @@ namespace DadosExporter.Exporter
         private static readonly ILog Log =
               LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public void GerarRelatorio(Report report)
+        public void GerarRelatorio(Relatorio report)
         {
             if (report == null) { Log.Error("Tentativa de gerar relatório inválido."); return; }
             if (string.IsNullOrEmpty(report.FilePath))
@@ -47,7 +47,7 @@ namespace DadosExporter.Exporter
             return File.ReadAllText(path);
         }
 
-        public void GerarArquivoCsv(Report report, IEnumerable<string> dados)
+        public void GerarArquivoCsv(Relatorio report, IEnumerable<string> dados)
         {
             string caminho = string.Format(@"{0}\{1}{2}.csv", report.PathDestino, report.Name, DateTime.Now.ToString("DDMMYYYYHHMMSS"));
             using (StreamWriter file = new StreamWriter(caminho))

@@ -1,0 +1,14 @@
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\obj\Debug\ConsoleTeste.csproj.CoreCompileInputs.cache
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\ConsoleTeste.exe.config
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\ConsoleTeste.exe
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\ConsoleTeste.pdb
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\DadosExporter.exe
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\log4net.dll
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\DadosExporter.pdb
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\DadosExporter.exe.config
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\log4net.xml
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\obj\Debug\ConsoleTeste.csprojAssemblyReference.cache
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\obj\Debug\ConsoleTeste.csproj.CopyComplete
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\obj\Debug\ConsoleTeste.exe
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\obj\Debug\ConsoleTeste.pdb
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\ConsoleTeste\bin\Debug\RelatoriosConfig.xml

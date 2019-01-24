@@ -1,0 +1,11 @@
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\obj\Debug\DadosExporter.csprojAssemblyReference.cache
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\obj\Debug\DadosExporter.csproj.CoreCompileInputs.cache
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\bin\Debug\DadosExporter.exe.config
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\bin\Debug\DadosExporter.exe
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\bin\Debug\DadosExporter.pdb
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\bin\Debug\log4net.dll
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\bin\Debug\log4net.xml
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\obj\Debug\DadosExporter.csproj.CopyComplete
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\obj\Debug\DadosExporter.exe
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\obj\Debug\DadosExporter.pdb
+D:\WorkspacePessoal\WindowsService\DadosExporter-master\DadosExporter\bin\Debug\RelatoriosConfig.xml

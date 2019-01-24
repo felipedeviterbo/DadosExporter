@@ -1,29 +1,21 @@
 ﻿using DadosExporter.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using System.Configuration;
-using System.IO;
-using DadosExporter.Types.Exceptions;
 
-namespace DadosExporter.Exporter
+namespace ConsoleTeste
 {
-    public class Configurer
+    class Program
     {
-        public void ConfigurarRelatorios()
+        static void Main(string[] args)
         {
-            //ArquivoConfiguracaoRelatorio
-            string arquivo = ConfigurationSettings.AppSettings.Get(Consts.ArquivoConfiguracaoRelatorio);
-            if (string.IsNullOrEmpty(arquivo))
-                throw new ConfiguracaoNaoEncontradaException(Consts.ArquivoConfiguracaoRelatorio);
-            if (!File.Exists(arquivo))
-                throw new FileNotFoundException($@"Arquivo de configuração de relatórios não encontrado({arquivo})");
-            //Ler Relatorios
-            List<Relatorio> relatorios = new List<Relatorio>();
-            XElement relatoriosConfig = XElement.Load(arquivo);
+            string ttt = ConfigurationSettings.AppSettings.Get("ArquivoConfiguracaoRelatorio");
+            List <Relatorio> relatorios = new List<Relatorio>();
+            XElement relatoriosConfig = XElement.Load("RelatoriosConfig.xml");
             foreach (var node in relatoriosConfig.Elements())
             {
                 var nome = node.Attribute("nome").Value;
@@ -41,8 +33,6 @@ namespace DadosExporter.Exporter
                 };
                 relatorios.Add(r);
             }
-            //CriarRelatorios
-
         }
     }
 }
