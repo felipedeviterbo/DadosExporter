@@ -9,5 +9,6 @@ namespace DadosExporter
     public static class Consts
     {
         public const string ArquivoConfiguracaoRelatorio = nameof(ArquivoConfiguracaoRelatorio);
+        public const string GeradorRelatorioConnection = nameof(GeradorRelatorioConnection);
     }
 }

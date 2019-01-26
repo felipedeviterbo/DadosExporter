@@ -1,6 +1,8 @@
 ﻿using DadosExporter.Exporter;
 using DadosExporter.Services;
 using log4net;
+using Quartz;
+using Quartz.Impl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +29,10 @@ namespace DadosExporter
         protected override void OnStart(string[] args)
         {
             Logger.AddLog("DadosExporter iniciado");
-            Configurer.ConfigurarRelatorios();
+            ISchedulerFactory schedFact = new StdSchedulerFactory();
+            IScheduler sched = schedFact.GetScheduler();
+            sched.Start();
+            Configurer.ConfigurarRelatorios(sched);
         }
 
         protected override void OnStop()

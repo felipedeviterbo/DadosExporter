@@ -1,70 +1,86 @@
 ﻿using DadosExporter.Models;
+using DadosExporter.Repositorios;
 using log4net;
+using Quartz;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using DadosExporter.Context;
 
 namespace DadosExporter.Exporter
 {
-    public class Gerador
+    public class Gerador : IJob
     {
         private static readonly ILog Log =
               LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private RelatoriosRepository RelatoriosRepository { get; set; }
+        private Relatorio relatorio { get; set; }
 
-        public void GerarRelatorio(Relatorio report)
+        public Gerador()
         {
-            if (report == null) { Log.Error("Tentativa de gerar relatório inválido."); return; }
-            if (string.IsNullOrEmpty(report.FilePath))
-            {
-                Log.Error($"Relatório {report.Name} sem arquivo de sql de origem informado");
-                return;
-            }
-            if (!File.Exists(report.FilePath))
-            {
-                Log.Error($"Arquivo {report.FilePath} do relatório {report.Name} não encontrado");
-                return;
-            }
-            if (string.IsNullOrEmpty(report.PathDestino))
-            {
-                Log.Error($"Relatório {report.Name} não possui path de destino informada.");
-            }
-            if (Directory.Exists(report.PathDestino))
-            {
-                Log.Error($"Relatório {report.Name} possui caminho de destino inválido({report.PathDestino}).");
-                return;
-            }
-
-            string sql = ObterSqlArquivo(report.FilePath);
-            GerarArquivoCsv(report, new List<string>());
-            SalvarGeracaoArquivo(report.Name, sql);
+            RelatoriosRepository = new RelatoriosRepository();
         }
 
-        public string ObterSqlArquivo(string path)
+        public void Execute(IJobExecutionContext context)
         {
-            return File.ReadAllText(path);
+            try
+            {
+                relatorio = RelatoriosRepository.FindRelatorioByKey(context.Trigger.Key.Name);
+                if (relatorio == null) throw new InvalidOperationException($"Relatório não definido chave {context.Trigger.Key.Name}");
+                GerarRelatorio();
+            }
+            catch (Exception ex)
+            {
+                Log.Error($@"Erro gerar relatorio {relatorio.Name}. Mensagem: {ex.Message}");
+            }
         }
 
-        public void GerarArquivoCsv(Relatorio report, IEnumerable<string> dados)
+        public void GerarRelatorio()
         {
-            string caminho = string.Format(@"{0}\{1}{2}.csv", report.PathDestino, report.Name, DateTime.Now.ToString("DDMMYYYYHHMMSS"));
+            var connectionString = ConfigurationManager.ConnectionStrings[Consts.GeradorRelatorioConnection].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(relatorio.GetSqlRelatorio(), connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                GerarArquivoCsv(reader);
+                reader.Close();
+            }
+            SalvarGeracaoArquivo();
+        }
+
+        public void GerarArquivoCsv(SqlDataReader reader)
+        {
+            string caminho = relatorio.GetCSVPathDestino();
             using (StreamWriter file = new StreamWriter(caminho))
             {
-                foreach (string line in dados)
+                while (reader.Read())
                 {
-                    if (!string.IsNullOrEmpty(line))
+                    string linha = string.Empty;
+                    for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        file.WriteLine(line);
+                        linha += $@"{reader[i]};";
                     }
+                    file.WriteLine(linha);
                 }
             }
         }
         
-        public void SalvarGeracaoArquivo(string nome, string consulta)
+        public void SalvarGeracaoArquivo()
         {
-
+            Log.Info($"Salvar relatorio {relatorio.Name}");
+            ExporterContexto contexto = new ExporterContexto();
+            contexto.ExecucaoRelatorio.Add(new ExecucaoRelatorio {
+                nome = relatorio.Name,
+                consulta = relatorio.GetSqlRelatorio(),
+                dataExecucao = DateTime.Now,
+            });
+            contexto.SaveChanges();
         }
     }
 }

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<reports>
+  <relatorio nome="Relatorio 1" data="26-01-2019" hora="17:35:00" filePath="D:\Workspace\Reply\Relatorios\relat1.txt" pathDestino="D:\Workspace\Reply\Relatorios\resultados" />
+  <relatorio nome="Relatorio 2" data="26-01-2019" hora="17:35:00" filePath="D:\Workspace\Reply\Relatorios\relat2.txt" pathDestino="D:\Workspace\Reply\Relatorios\resultados" />
+  <relatorio nome="Relatorio 3" data="26-01-2019" hora="17:35:12" filePath="D:\Workspace\Reply\Relatorios\relat3.txt" pathDestino="D:\Workspace\Reply\Relatorios\resultados" />
+  <relatorio nome="Relatorio 4" data="26-01-2019" hora="17:35:30" filePath="D:\Workspace\Reply\Relatorios\relat4.txt" pathDestino="D:\Workspace\Reply\Relatorios\resultados" />
+</reports>
